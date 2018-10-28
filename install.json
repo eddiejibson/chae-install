@@ -1,0 +1,70 @@
+{
+    "packages": {
+        "nodejs": {
+            "name": "NodeJS",
+            "cmds": [
+                "apt-get install nodejs -y"
+            ]
+        },
+        "python3": {
+            "name": "Python 3",
+            "cmds": [
+                "apt-get install python3 -y"
+            ]
+        },
+        "ruby": {
+            "name": "Ruby",
+            "cmds": [
+                "apt-get install ruby-full"
+            ]
+        },
+        "jre": {
+            "name": "Java Runtime Environment (JRE)",
+            "cmds": [
+                "apt-get install default-jre -y"
+            ]
+        },
+        "jdk": {
+            "name": "Java Development Kit (JDK)",
+            "cmds": [
+                "apt-get install default-jdk -y"
+            ]
+        },
+        "npm": {
+            "name": "Node Package Manager (NPM)",
+            "cmds": [
+                "apt-get install npm -y"
+            ]
+        },
+        "python3-pip": {
+            "name": "Pip Installs Packages for Python 3",
+            "cmds": [
+                "apt-get install python3-pip -y"
+            ]
+        },
+        "nginx": {
+            "name": "NGINX",
+            "cmds": [
+                "apt-get install nginx -y"
+            ]
+        },
+        "apache2": {
+            "name": "Apache2",
+            "cmds": [
+                "apt-get install apache2 -y"
+            ]
+        }
+    },
+    "categories": {
+        "Development Languages": {
+            "packages": ["nodejs", "python3", "ruby", "jdk", "jre"]
+        },
+        "Web Servers": {
+            "packages": ["nginx", "apache2"]
+        },
+        "Package Managers": {
+            "packages": ["npm", "pip"]
+        }
+    }
+
+}
