@@ -1,3 +1,3 @@
 # chae-install
-Installation helper for chae.sh
+Generates install script for popular packages.
 
