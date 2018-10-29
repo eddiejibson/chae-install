@@ -2,7 +2,7 @@
  * @Project: install
  * @Created Date: Saturday, October 27th 2018, 7:54:15 pm
  * @Author: Edward Jibson
- * @Last Modified Time: October 29th 2018, 4:26:17 pm
+ * @Last Modified Time: October 29th 2018, 9:52:19 pm
  * @Last Modified By: Edward Jibson
  * @Copyright: (c) 2018 Oxro Holdings LLC
  */
@@ -13,7 +13,8 @@ const express = require("express"),
     morgan = require("morgan"),
     config = require("./config.json"),
     Sentry = require('@sentry/node'),
-    scriptGenerator = require("./routes/scriptGenerator.js");
+    scriptGenerator = require("./routes/scriptGenerator.js"),
+    install = require("./install.json");
 
 if (config.sentry) {
     Sentry.init({
@@ -23,6 +24,7 @@ if (config.sentry) {
 }
 
 app.use(morgan("dev"));
+app.use(express.static(__dirname + '/static'));
 app.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -36,6 +38,13 @@ app.use((req, res, next) => {
         return res.status(200).json({});
     }
     next();
+});
+
+app.set('view engine', 'ejs'); //SHOULD NOT BE USED IN PRODUCTION. BUILD THE HTML FILE INSTEAD
+app.get('/', (req, res) => {
+    res.render('index', {
+        "install": install
+    });
 });
 
 app.use(scriptGenerator); //Pass to script generator route 

@@ -112,16 +112,18 @@
             ]
         }
     },
-    "categories": {
-        "Development Languages": {
+    "categories": [{
+            "title": "Development Languages",
             "packages": ["nodejs", "python3", "php7.1", "ruby", "jdk", "jre"]
         },
-        "Web Servers": {
+        {
+            "title": "Web Servers",
             "packages": ["nginx", "apache2"]
         },
-        "Package Managers": {
-            "packages": ["npm", "pip"]
+        {
+            "title": "Package Managers",
+            "packages": ["npm", "python3-pip"]
         }
-    }
+    ]
 
 }

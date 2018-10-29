@@ -1,0 +1,114 @@
+<!--
+@Project: chae-install
+@Created Date: Monday, October 29th 2018, 7:24:20 pm
+@Author: Edward Jibson
+@Last Modified Time: October 29th 2018, 9:37:48 pm
+@Last Modified By: Edward Jibson
+@Copyright: (c) 2018 Oxro Holdings LLC
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>install || chae.</title>
+    <link rel="stylesheet" href="https://cdn.oxro.io/uikit/3.0.20/css/uikit.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+
+    <div class="uk-card uk-card-default uk-card-body
+        uk-width-1-2@m">
+        <h3 class="uk-card-title">One Line Installation</h3>
+        <div class="uk-margin">
+            <input class="uk-input uk-form-large" id="installUrl" type="text" value="Select packages below to create the URL"
+                readonly onfocus="this.select()">
+        </div>
+    </div>
+    
+    
+    <h2>
+        Development Languages
+    </h2>
+    <ul>
+        
+
+        <li><label><input class="uk-checkbox" name="nodejs" type="checkbox">
+                NodeJS</label></li>
+
+        
+
+        <li><label><input class="uk-checkbox" name="python3" type="checkbox">
+                Python 3</label></li>
+
+        
+
+        <li><label><input class="uk-checkbox" name="php7.1" type="checkbox">
+                PHP 7.1</label></li>
+
+        
+
+        <li><label><input class="uk-checkbox" name="ruby" type="checkbox">
+                Ruby</label></li>
+
+        
+
+        <li><label><input class="uk-checkbox" name="jdk" type="checkbox">
+                Java Development Kit (JDK)</label></li>
+
+        
+
+        <li><label><input class="uk-checkbox" name="jre" type="checkbox">
+                Java Runtime Environment (JRE)</label></li>
+
+        
+    </ul>
+
+    
+    <h2>
+        Web Servers
+    </h2>
+    <ul>
+        
+
+        <li><label><input class="uk-checkbox" name="nginx" type="checkbox">
+                NGINX</label></li>
+
+        
+
+        <li><label><input class="uk-checkbox" name="apache2" type="checkbox">
+                Apache2</label></li>
+
+        
+    </ul>
+
+    
+    <h2>
+        Package Managers
+    </h2>
+    <ul>
+        
+
+        <li><label><input class="uk-checkbox" name="npm" type="checkbox">
+                Node Package Manager (NPM)</label></li>
+
+        
+
+        <li><label><input class="uk-checkbox" name="python3-pip" type="checkbox">
+                Pip Installs Packages for Python 3</label></li>
+
+        
+    </ul>
+
+    
+    
+
+
+</body>
+
+</html>

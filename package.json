@@ -4,8 +4,8 @@
   "description": "Install for chae",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "build": "node actions/buildStatic.js ",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -21,8 +21,11 @@
     "@sentry/node": "^4.2.3",
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
+    "dayjs": "^1.7.7",
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
-    "pretty": "^2.0.0"
+    "pretty": "^2.0.0",
+    "serve-favicon": "^2.5.0"
   }
 }

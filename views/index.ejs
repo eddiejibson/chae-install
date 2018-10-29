@@ -1,0 +1,53 @@
+<!--
+@Project: chae-install
+@Created Date: Monday, October 29th 2018, 7:24:20 pm
+@Author: Edward Jibson
+@Last Modified Time: October 29th 2018, 9:37:48 pm
+@Last Modified By: Edward Jibson
+@Copyright: (c) 2018 Oxro Holdings LLC
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>install || chae.</title>
+    <link rel="stylesheet" href="https://cdn.oxro.io/uikit/3.0.20/css/uikit.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+
+    <div class="uk-card uk-card-default uk-card-body
+        uk-width-1-2@m">
+        <h3 class="uk-card-title">One Line Installation</h3>
+        <div class="uk-margin">
+            <input class="uk-input uk-form-large" id="installUrl" type="text" value="Select packages below to create the URL"
+                readonly onfocus="this.select()">
+        </div>
+    </div>
+    <% if (typeof install == "object") { %>
+    <% install.categories.forEach((category) => { %>
+    <h2>
+        <%= category.title %>
+    </h2>
+    <ul>
+        <% category.packages.forEach((package) => { %>
+
+        <li><label><input class="uk-checkbox" name="<%= package %>" type="checkbox">
+                <%= install.packages[package].name %></label></li>
+
+        <% }); %>
+    </ul>
+
+    <% }); %>
+    <% } %>
+
+
+</body>
+
+</html>
