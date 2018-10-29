@@ -6,6 +6,51 @@
                 "apt-get install nodejs -y"
             ]
         },
+        "php7.1": {
+            "name": "PHP 7.1",
+            "cmds": [
+                "apt-get install php7.1 -y"
+            ],
+            "ppa": "apt-add-repository ppa:ondrej/php -y",
+            "children": {
+                "php7.1-fpm": {
+                    "name": "PHP 7.1 FPM",
+                    "cmds": [
+                        "apt-get install php7.1-fpm -y"
+                    ]
+                },
+                "php7.1-cli": {
+                    "name": "PHP 7.1 CLI",
+                    "cmds": [
+                        "apt-get install php7.1-cli -y"
+                    ]
+                },
+                "php7.1-mysql": {
+                    "name": "PHP 7.1 MySQL",
+                    "cmds": [
+                        "apt-get install php7.1-mysql -y"
+                    ]
+                },
+                "php7.1-json": {
+                    "name": "PHP 7.1 JSON",
+                    "cmds": [
+                        "apt-get install php7.1-json -y"
+                    ]
+                },
+                "php7.1-gd": {
+                    "name": "PHP 7.1 GD",
+                    "cmds": [
+                        "apt-get install php7.1-gd -y"
+                    ]
+                },
+                "php7.1-mbstring": {
+                    "name": "PHP 7.1 Multibyte String",
+                    "cmds": [
+                        "apt-get install php7.1-mbstring -y"
+                    ]
+                }
+            }
+        },
         "python3": {
             "name": "Python 3",
             "cmds": [
@@ -53,11 +98,23 @@
             "cmds": [
                 "apt-get install apache2 -y"
             ]
+        },
+        "zip": {
+            "name": "zip",
+            "cmds": [
+                "apt-get install zip -y"
+            ]
+        },
+        "unzip": {
+            "name": "unzip",
+            "cmds": [
+                "apt-get install unzip -y"
+            ]
         }
     },
     "categories": {
         "Development Languages": {
-            "packages": ["nodejs", "python3", "ruby", "jdk", "jre"]
+            "packages": ["nodejs", "python3", "php7.1", "ruby", "jdk", "jre"]
         },
         "Web Servers": {
             "packages": ["nginx", "apache2"]
