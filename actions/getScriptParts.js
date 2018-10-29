@@ -2,7 +2,7 @@
  * @Project: chae-install
  * @Created Date: Sunday, October 28th 2018, 12:36:50 pm
  * @Author: Edward Jibson
- * @Last Modified Time: October 29th 2018, 4:14:29 pm
+ * @Last Modified Time: October 29th 2018, 4:24:34 pm
  * @Last Modified By: Edward Jibson
  * @Copyright: (c) 2018 Oxro Holdings LLC
  */
@@ -34,7 +34,6 @@ var getPreInstallPart = ((packages) => {
 var getInstallPart = ((packages, script = ``) => {
     return new Promise((resolve, reject) => {
         script += `\necho -e "Installing Packages..."`;
-
         Promise.each(packages, (package) => {
             if (install.packages[package]) {
                 Promise.each(install.packages[package].cmds, (cmd) => {
@@ -53,7 +52,7 @@ var getInstallPart = ((packages, script = ``) => {
                 }
             }
         }).then(() => {
-            resolve(script);
+            resolve(script += `\necho -e "Complete. Thank-you for using install.chae.sh."`);
         });
     });
 });
