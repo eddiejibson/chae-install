@@ -123,6 +123,10 @@
         {
             "title": "Package Managers",
             "packages": ["npm", "python3-pip"]
+        },
+        {
+            "title": "Utilities",
+            "packages": ["zip", "unzip"]
         }
     ]
 

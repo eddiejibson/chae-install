@@ -2,7 +2,7 @@
 @Project: chae-install
 @Created Date: Monday, October 29th 2018, 7:24:20 pm
 @Author: Edward Jibson
-@Last Modified Time: October 29th 2018, 9:37:48 pm
+@Last Modified Time: October 30th 2018, 6:37:52 pm
 @Last Modified By: Edward Jibson
 @Copyright: (c) 2018 Oxro Holdings LLC
 -->
@@ -15,37 +15,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>install || chae.</title>
-    <link rel="stylesheet" href="https://cdn.oxro.io/uikit/3.0.20/css/uikit.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <script src="js/app.js"></script>
 </head>
 
 <body>
-
-    <div class="uk-card uk-card-default uk-card-body
-        uk-width-1-2@m">
-        <h3 class="uk-card-title">One Line Installation</h3>
-        <div class="uk-margin">
-            <input class="uk-input uk-form-large" id="installUrl" type="text" value="Select packages below to create the URL"
+    <div class="container">
+    <div class="full">
+    <div class="card card-default card-body">
+        <h3 class="card-title">One Line Installation</h3>
+        <div class="margin">
+            <input class="input form-large" id="installUrl" type="text" value="Select packages below to create the URL"
                 readonly onfocus="this.select()">
         </div>
     </div>
+    <div class="selection">
     <% if (typeof install == "object") { %>
     <% install.categories.forEach((category) => { %>
-    <h2>
+    <h3>
         <%= category.title %>
-    </h2>
+    </h3>
     <ul>
         <% category.packages.forEach((package) => { %>
 
-        <li><label><input class="uk-checkbox" name="<%= package %>" type="checkbox">
+        <li><label><input class="checkbox" name="<%= package %>" type="checkbox">
                 <%= install.packages[package].name %></label></li>
+        <% if (typeof install.packages[package].children == "object") { %>
+        <ul class="children">
+        <% Object.keys(install.packages[package].children).forEach((child) => { %>
+        <li><label><input class="checkbox" id="child" data-parent="<%= package %>" name="<%= child %>" type="checkbox"> <%= install.packages[package].children[child].name %></label></li>
+        <% }); %>
+        </ul>
+
+        <% } %>
 
         <% }); %>
     </ul>
 
     <% }); %>
     <% } %>
+    <p>Was the package or task you wanted not listed? <a href="https://github.com/eddiejibson/chae-install/blob/master/install.json">Add it here</a>.</p>
+    </div>
+    
+    </div>
+    </div>
+    
+    
+
+    <footer class="footer">Built with 💖 by <a href="https://twitter.com/eddiejibson">Edward Jibson</a></footer>
 
 
 </body>
