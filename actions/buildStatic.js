@@ -2,7 +2,7 @@
  * @Project: chae-install
  * @Created Date: Monday, October 29th 2018, 9:14:51 pm
  * @Author: Edward Jibson
- * @Last Modified Time: October 30th 2018, 9:47:46 pm
+ * @Last Modified Time: October 30th 2018, 10:18:40 pm
  * @Last Modified By: Edward Jibson
  * @Copyright: (c) 2018 Oxro Holdings LLC
  */
@@ -14,6 +14,7 @@ const dayjs = require("dayjs"),
     config = require("../config.json");
 var build = (() => {
     return new Promise((resolve, reject) => {
+        let defaultDir = `${__dirname}/../build/index.html`
         fs.readFile(`${__dirname}/../views/index.ejs`, 'utf8', (err, data) => {
             if (err) {
                 reject(err);
@@ -22,7 +23,7 @@ var build = (() => {
                     html = template({
                         "install": install
                     });
-                fs.writeFile(`${ config.buildDirectory || __dirname}/../build/index.html`, html, (err) => {
+                fs.writeFile(`${ config.buildLocation || defaultDir}`, html, (err) => {
                     if (err) {
                         reject(err);
                     } else {

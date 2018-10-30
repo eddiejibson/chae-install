@@ -2,7 +2,7 @@
  * @Project: install
  * @Created Date: Saturday, October 27th 2018, 7:54:15 pm
  * @Author: Edward Jibson
- * @Last Modified Time: October 30th 2018, 10:02:04 pm
+ * @Last Modified Time: October 30th 2018, 10:03:29 pm
  * @Last Modified By: Edward Jibson
  * @Copyright: (c) 2018 Oxro Holdings LLC
  */
@@ -40,7 +40,6 @@ app.use((req, res, next) => {
     next();
 });
 
-
 if (!config.production) {
     app.set('view engine', 'ejs'); //SHOULD NOT BE USED IN PRODUCTION. BUILD THE HTML FILE INSTEAD
     app.get('/', (req, res) => {
@@ -49,7 +48,6 @@ if (!config.production) {
         });
     });
 }
-
 
 app.use(scriptGenerator); //Pass to script generator route 
 if (config.sentry) {
