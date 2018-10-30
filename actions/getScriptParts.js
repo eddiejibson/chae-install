@@ -2,7 +2,7 @@
  * @Project: chae-install
  * @Created Date: Sunday, October 28th 2018, 12:36:50 pm
  * @Author: Edward Jibson
- * @Last Modified Time: October 30th 2018, 10:28:14 pm
+ * @Last Modified Time: October 30th 2018, 10:33:08 pm
  * @Last Modified By: Edward Jibson
  * @Copyright: (c) 2018 Oxro Holdings LLC
  */
@@ -37,6 +37,7 @@ var getInstallPart = ((packages, script = ``) => {
         Promise.each(packages, (package) => {
             if (install.packages[package]) {
                 Promise.each(install.packages[package].cmds, (cmd) => {
+                    console.log(cmd);
                     script += `\n${cmd}`;
                 });
             } else {
