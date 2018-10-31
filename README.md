@@ -35,4 +35,4 @@ You can now run the server:
 ```bash
 $ npm start app
 ```
-Now all you have to do is serve the static assets using a web server such as NGINX.
+Now all that's left to do is serve the static assets using a web server such as NGINX.
