@@ -345,6 +345,33 @@ p {
     width: 50%;
 }
 
+@media only screen and (max-width: 600px) {
+    .full {
+        width: 95%;
+    }
+
+}
+
+@media only screen and (max-width: 900px) {
+    .full {
+        width: 70%;
+    }
+
+    .main-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+}
+
+.main-title {
+    display: flex;
+    justify-content: space-between;
+}
+
 .card {
     background-color: #2C2E34;
 }
