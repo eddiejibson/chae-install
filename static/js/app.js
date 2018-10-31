@@ -3,11 +3,12 @@
  * @Project: chae-install
  * @Created Date: Monday, October 29th 2018, 6:31:05 pm
  * @Author: Edward Jibson
- * @Last Modified Time: October 30th 2018, 8:27:59 pm
+ * @Last Modified Time: October 30th 2018, 11:48:16 pm
  * @Last Modified By: Edward Jibson
  * @Copyright: (c) 2018 Oxro Holdings LLC
  */
 var packages = 0;
+var url = "";
 document.addEventListener("DOMContentLoaded", function (event) {
     var installUrl = document.getElementById("installUrl")
     var checkbox = document.querySelectorAll("input[type=checkbox]");
@@ -41,13 +42,29 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }
         });
     }
+
+    var coll = document.getElementsByClassName("collapsible");
+
+    for (var i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            console.log(this.nextElementSibling);
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+
 });
 
 var changeUrl = ((string) => {
-    console.log(packages);
     if (packages) {
-        installUrl.value += `,${string}`;
+        url += `,${string}`;
     } else {
-        installUrl.value = `https://install.chae.sh/${string}`;
+        url = `wget -qO- https://install.chae.sh/${string}`;
     }
+    installUrl.value = `${url} | bash`
 });

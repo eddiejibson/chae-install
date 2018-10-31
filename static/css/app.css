@@ -356,3 +356,42 @@ p {
     flex-direction: column;
     align-items: center;
 }
+
+.info {
+    padding: 0 18px;
+
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.collapsible i {
+    float: right;
+}
+
+.active i {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+h3 i {
+    float: right;
+    padding-left: 20px;
+}
+
+.collapsible {
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #313439;
+    color: #e5e5e5;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.25rem;
+}

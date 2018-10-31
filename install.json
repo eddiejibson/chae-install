@@ -99,6 +99,32 @@
                 "apt-get install apache2 -y"
             ]
         },
+        "mysql": {
+            "name": "MySQL",
+            "details": true,
+            "cmds": [
+                "password=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)",
+                "echo 'Root MySQL Password： ${password}' >> /home/details.chae",
+                "export DEBIAN_FRONTEND='noninteractive'",
+                "debconf-set-selections <<< 'mysql-server mysql-server/root_password password ${password}'",
+                "debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password ${password}'",
+                "apt-get install mysql-server -y"
+            ]
+        },
+        "redis": {
+            "name": "Redis",
+            "cmds": [
+                "apt-get install redis-server -y"
+            ]
+        },
+        "mongodb": {
+            "name": "MongoDB",
+            "cmds": [
+                "apt-get install mongodb -y",
+                "systemctl start mongodb",
+                "systemctl enable mongodb"
+            ]
+        },
         "zip": {
             "name": "zip",
             "cmds": [
@@ -113,7 +139,7 @@
         }
     },
     "categories": [{
-            "title": "Development Languages",
+            "title": "Programming Languages",
             "packages": ["nodejs", "python3", "php7.1", "ruby", "jdk", "jre"]
         },
         {
@@ -123,6 +149,10 @@
         {
             "title": "Package Managers",
             "packages": ["npm", "python3-pip"]
+        },
+        {
+            "title": "Databases",
+            "packages": ["mysql", "mongodb", "redis"]
         },
         {
             "title": "Utilities",

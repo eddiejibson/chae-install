@@ -2,13 +2,16 @@
  * @Project: chae-install
  * @Created Date: Sunday, October 28th 2018, 12:36:50 pm
  * @Author: Edward Jibson
- * @Last Modified Time: October 30th 2018, 10:33:08 pm
+ * @Last Modified Time: October 30th 2018, 11:24:07 pm
  * @Last Modified By: Edward Jibson
  * @Copyright: (c) 2018 Oxro Holdings LLC
  */
 
 const install = require("../install.json"),
     Promise = require("bluebird");
+
+
+
 
 var getPreInstallPart = ((packages) => {
     return new Promise((resolve, reject) => {
@@ -34,30 +37,50 @@ var getPreInstallPart = ((packages) => {
 var getInstallPart = ((packages, script = ``) => {
     return new Promise((resolve, reject) => {
         script += `\necho -e "Installing Packages..."`;
-        Promise.each(packages, (package) => {
-            if (install.packages[package]) {
-                Promise.each(install.packages[package].cmds, (cmd) => {
-                    console.log(cmd);
-                    script += `\n${cmd}`;
-                });
-            } else {
-                if (package.indexOf("-" > -1)) { //All children are named with the convention "parentPackage-subPackage"
-                    let parentPackage = package.split("-");
-                    if (install.packages[parentPackage[0]].children) {
-                        if (install.packages[parentPackage[0]].children[package]) {
-                            Promise.each(install.packages[parentPackage[0]].children[package].cmds, (cmd) => {
-                                script += `\n${cmd}`;
-                            });
+        ifDetails(packages).then((detail) => {
+            Promise.each(packages, (package) => {
+                if (install.packages[package]) {
+                    Promise.each(install.packages[package].cmds, (cmd) => {
+                        script += `\n${cmd}`;
+                    });
+                } else {
+                    if (package.indexOf("-" > -1)) { //All children are named with the convention "parentPackage-subPackage"
+                        let parentPackage = package.split("-");
+                        if (install.packages[parentPackage[0]].children) {
+                            if (install.packages[parentPackage[0]].children[package]) {
+                                Promise.each(install.packages[parentPackage[0]].children[package].cmds, (cmd) => {
+                                    script += `\n${cmd}`;
+                                });
+                            }
                         }
                     }
                 }
-            }
-        }).then(() => {
-            resolve(script += `\necho -e "Complete. Thank-you for using install.chae.sh."`);
-        });
+            }).then(() => {
+                if (detail) {
+                    resolve(script += `\necho -e "Complete. Thank-you for using install.chae.sh."\necho -e "As some packages you installed reqired some form of action (e.g setting a password), this has been logged to the file /home/details.chae - all information can be found here."`);
+                } else {
+                    resolve(script += `\necho -e "Complete. Thank-you for using install.chae.sh."`);
+                }
+
+            });
+
+        })
     });
 });
 
+
+var ifDetails = ((package) => { //looks stupid rn but adding various things like setting passwords
+    return new Promise((resolve, reject) => {
+        Promise.each(package, (aPackage) => {
+            if (install.packages[aPackage].details) {
+                resolve(true);
+            }
+        }).then(() => {
+            resolve(false);
+        });
+    })
+
+});
 module.exports = {
     "getPreInstallPart": getPreInstallPart,
     "getInstallPart": getInstallPart
