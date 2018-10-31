@@ -2,7 +2,7 @@
  * @Project: chae-install
  * @Created Date: Monday, October 29th 2018, 9:14:51 pm
  * @Author: Edward Jibson
- * @Last Modified Time: October 30th 2018, 10:20:46 pm
+ * @Last Modified Time: October 31st 2018, 12:24:25 am
  * @Last Modified By: Edward Jibson
  * @Copyright: (c) 2018 Oxro Holdings LLC
  */
@@ -23,6 +23,14 @@ var build = (() => {
                     html = template({
                         "install": install
                     });
+                if (!fs.existsSync(`${ config.buildDirectory || defaultDir}/css/`)) {
+                    fs.mkdirSync(`${ config.buildDirectory || defaultDir}/css/`);
+                }
+                if (!fs.existsSync(`${ config.buildDirectory || defaultDir}/js/`)) {
+                    fs.mkdirSync(`${ config.buildDirectory || defaultDir}/js/`);
+                }
+                fs.createReadStream(`${__dirname}/../static/css/app.css`).pipe(fs.createWriteStream(`${ config.buildDirectory || defaultDir}/css/app.css`));
+                fs.createReadStream(`${__dirname}/../static/js/app.js`).pipe(fs.createWriteStream(`${ config.buildDirectory || defaultDir}/js/app.js`));
                 fs.writeFile(`${ config.buildDirectory || defaultDir}/index.html`, html, (err) => {
                     if (err) {
                         reject(err);
