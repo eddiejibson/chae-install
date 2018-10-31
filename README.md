@@ -21,7 +21,7 @@ $ cd chae-install/
 
 You now must configure such. The sample config file can be found with the file name `config.sample.json` - the easiest thing to do is rename it to `config.json` and edit it to your needs. Upon adding, please submit a pull request so we can take advantage of your addition, as well. 
 
-Next, the dependancies need to be installed:
+Dependancies can be installed by running the following:
 
 ```bash
 $ npm install
@@ -35,3 +35,4 @@ You can now run the server:
 ```bash
 $ npm start app
 ```
+Now all you have to do is serve the static assets using a web server such as NGINX.
