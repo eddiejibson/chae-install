@@ -6,7 +6,7 @@ Understandably, setting up a server from scratch is a pain. install.chae.sh assi
 We are more than welcoming of any pull requests. If you'd like to add a package or task that is not already implemented, then the `install.json` file is where you can add such.
 
 ## Running on your own server
-Running your own instalation script generator is easy.
+If you'd like to run an exact clone of install.chae.sh, running your own instalation script generator is easy.
 Firstly, clone the git repository:
 
 ```bash
