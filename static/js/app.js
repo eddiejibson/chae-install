@@ -3,11 +3,12 @@
  * @Project: chae-install
  * @Created Date: Monday, October 29th 2018, 6:31:05 pm
  * @Author: Edward Jibson
- * @Last Modified Time: October 30th 2018, 11:48:16 pm
+ * @Last Modified Time: November 9th 2018, 7:42:48 pm
  * @Last Modified By: Edward Jibson
  * @Copyright: (c) 2018 Oxro Holdings LLC
  */
-var packages = 0;
+var packages = [];
+let children = {};
 var url = "";
 document.addEventListener("DOMContentLoaded", function (event) {
     var installUrl = document.getElementById("installUrl")
@@ -18,33 +19,32 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 if (this.id) {
                     if (this.id == "child") {
                         let parent = document.getElementsByName(this.getAttribute('data-parent'));
-
                         parent[0].checked = true;
-                        console.log(installUrl.value)
-                        if (installUrl.value.includes(parent[0].name)) {
-                            changeUrl(this.name);
+                        if (!children[parent[0].name]) {
+                            children[parent[0].name] = []
+                        }
+                        children[parent[0].name].push(this.name);
+                        if (packages.indexOf(parent[0].name) > -1) {
+                            push([this.name]);
                         } else {
-                            changeUrl(`${parent[0].name},${this.name}`);
-                            packages++;
+                            push([parent[0].name, this.name]);
                         }
                     }
                 } else {
-                    changeUrl(this.name);
+                    push([this.name]);
                 }
-                packages++;
             } else {
-                if (packages - 1 == 0) {
-                    installUrl.value = "Select packages below to create the URL"; //Back to default value
-                } else {
-                    installUrl.value = installUrl.value.replace(`,${this.name}`, "");
+                if (children[this.name]) {
+                    console.log("exit")
+                    removeFromUrl([children[this.name]]);
+                    removeChildren([children[this.name]], this.name);
                 }
-                packages--;
+                removeFromUrl([this.name]);
             }
         });
     }
 
     var coll = document.getElementsByClassName("collapsible");
-
     for (var i = 0; i < coll.length; i++) {
         coll[i].addEventListener("click", function () {
             this.classList.toggle("active");
@@ -57,14 +57,37 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }
         });
     }
-
 });
 
-var changeUrl = ((string) => {
-    if (packages) {
-        url += `,${string}`;
-    } else {
-        url = `wget -qO- https://install.chae.sh/${string}`;
-    }
-    installUrl.value = `${url} | bash`
+const push = ((array) => {
+    array.forEach(item => {
+        packages.push(item)
+    });
+    updateUrl();
+});
+
+const removeFromUrl = ((array) => {
+    array.forEach((item) => {
+        let i = packages.indexOf(item);
+        if (i <= 0) {
+            packages = [];
+            installUrl.value = "Select packages below to create the URL";
+        } else {
+            packages.splice(packages.indexOf(item), 1);
+            updateUrl();
+        }
+    });
+});
+
+const removeChildren = ((array, name) => {
+    array.forEach(item => {
+        let child = document.getElementsByName(item);
+        child[0].checked = false;
+        children[name] = [];
+    });
+});
+
+const updateUrl = (() => {
+    let packageString = packages.join();
+    installUrl.value = `wget -qO- https://install.chae.sh/${packageString}`;
 });
