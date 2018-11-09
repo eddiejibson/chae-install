@@ -3,7 +3,7 @@
  * @Project: chae-install
  * @Created Date: Monday, October 29th 2018, 6:31:05 pm
  * @Author: Edward Jibson
- * @Last Modified Time: November 9th 2018, 7:42:48 pm
+ * @Last Modified Time: November 9th 2018, 9:03:52 pm
  * @Last Modified By: Edward Jibson
  * @Copyright: (c) 2018 Oxro Holdings LLC
  */
@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
             } else {
                 if (children[this.name]) {
                     console.log("exit")
-                    removeFromUrl([children[this.name]]);
-                    removeChildren([children[this.name]], this.name);
+                    removeFromUrl(children[this.name]);
+                    removeChildren(children[this.name], this.name);
                 }
                 removeFromUrl([this.name]);
             }
@@ -80,9 +80,15 @@ const removeFromUrl = ((array) => {
 });
 
 const removeChildren = ((array, name) => {
+    console.log(array)
     array.forEach(item => {
+        console.log("item:" + item)
         let child = document.getElementsByName(item);
-        child[0].checked = false;
+        console.log(child)
+        if (child[0]) {
+            child[0].checked = false;
+        }
+
         children[name] = [];
     });
 });
