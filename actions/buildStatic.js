@@ -7,8 +7,13 @@
  * @Copyright: (c) 2018 Oxro Holdings LLC
  */
 
-const dayjs = require("dayjs"),
-    fs = require("fs"),
+
+//LMFAOOOOOOOOOOOOOO  
+//THIS IS THE most skatty way of doing this
+//i just wanted it to work
+//ill fix it later thnx
+
+const fs = require("fs"),
     ejs = require("ejs"),
     install = require("../install.json"),
     config = require("../config.json");
