@@ -2,7 +2,7 @@
  * @Project: chae-install
  * @Created Date: Sunday, October 28th 2018, 12:36:50 pm
  * @Author: Edward Jibson
- * @Last Modified Time: October 30th 2018, 11:24:07 pm
+ * @Last Modified Time: November 9th 2018, 8:08:14 pm
  * @Last Modified By: Edward Jibson
  * @Copyright: (c) 2018 Oxro Holdings LLC
  */
@@ -72,11 +72,16 @@ var getInstallPart = ((packages, script = ``) => {
 var ifDetails = ((package) => { //looks stupid rn but adding various things like setting passwords
     return new Promise((resolve, reject) => {
         Promise.each(package, (aPackage) => {
-            if (install.packages[aPackage].details) {
-                resolve(true);
+            console.log(aPackage)
+            if (install.packages[aPackage]) {
+                if (install.packages[aPackage].details) {
+                    resolve(true);
+                }
             }
         }).then(() => {
             resolve(false);
+        }).catch((err) => {
+            console.error(err)
         });
     })
 
