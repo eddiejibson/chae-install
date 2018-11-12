@@ -11,19 +11,38 @@
 <html lang="en">
 
 <head>
+    <title>install || chae.</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/app.css" />
+    <script src="js/app.js"></script>
+    <link rel="icon" type="image/png" href="https://install.chae.sh/img/icon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>install || chae.</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500" rel="stylesheet">
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-    <!-- css -->
-    <link rel="stylesheet" href="css/app.css" />
-    <!-- js -->
-    <script src="js/app.js"></script>
+    <meta name="title" content="install || chae.">
+    <meta name="description" content="Chae Install allows you to generate a one line installation script with the packages and tasks of your choice to speed up the installation of servers.">
+    <meta name="keywords" content="Install, Server Install, One Line Install Generator, Installation Script, How to install servers, servers, server configuration, One Line script, Installation script">
+    <meta name="copyright" content="Copyright (c) 2018, Edward Jibson">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="install || chae.">
+    <meta name="twitter:site" content="@chaedotsh">
+    <meta name="twitter:creator" content="@eddiejibson">
+    <meta name="twitter:description" content="Chae Install allows you to generate a one line installation script with the packages and tasks of your choice to speed up the installation of servers.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="chae.">
+    <meta property="og:title" content="install">
+    <meta property="og:description" content="Chae Install allows you to generate a one line installation script with the packages and tasks of your choice to speed up the installation of servers.">
+    <meta property="og:url" content="https://install.chae.sh/">
+    <link rel="canonical" href="https://install.chae.sh/">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#282A2F">
+    <meta name="msapplication-navbutton-color" content="#282A2F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#282A2F">
+    <link rel="apple-touch-startup-image" href="https://install.chae.sh/img/256.png">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
 </head>
-<!--<a href="https://paypal.me/eddiejibson/5"/><i class="fab fa-paypal"></i></a>-->
 <body>
     <div class="container">
     <div class="full">
@@ -51,7 +70,6 @@
     </h3>
     <ul>
         <% category.packages.forEach((package) => { %>
-
         <li><label><input class="checkbox" name="<%= package %>" type="checkbox">
                 <%= install.packages[package].name %></label></li>
         <% if (typeof install.packages[package].children == "object") { %>
@@ -60,23 +78,17 @@
         <li><label><input class="checkbox" id="child" data-parent="<%= package %>" name="<%= child %>" type="checkbox"> <%= install.packages[package].children[child].name %></label></li>
         <% }); %>
         </ul>
-
         <% } %>
-
         <% }); %>
     </ul>
-
     <% }); %>
     <% } %>
     <p>Was the package or task you wanted not listed? <a href="https://github.com/eddiejibson/chae-install/blob/master/install.json">Add it here</a>.</p>
     </div>
-    
     </div>
     </div>
-    
-    
 
-    <footer class="footer">Built with 💖 by <a href="https://twitter.com/eddiejibson">Eddie Jibson</a></footer>
+    <footer class="footer">Built with 💖 by <a href="https://twitter.com/eddiejibson">Edward Jibson</a></footer>
 
 
 </body>
