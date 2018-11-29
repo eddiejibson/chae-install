@@ -3,7 +3,7 @@
  * @Project: chae-install
  * @Created Date: Monday, October 29th 2018, 6:31:05 pm
  * @Author: Edward Jibson
- * @Last Modified Time: November 9th 2018, 9:10:04 pm
+ * @Last Modified Time: November 11th 2018, 4:47:04 pm
  * @Last Modified By: Edward Jibson
  * @Copyright: (c) 2018 Oxro Holdings LLC
  */
@@ -66,7 +66,7 @@ const push = ((array) => {
 
 const removeFromUrl = ((array) => {
     array.forEach((item) => {
-        if ((packages.length - 1) < 0) {
+        if (packages.length <= 0) {
             packages = [];
             installUrl.value = "Select packages below to create the URL";
         } else {
