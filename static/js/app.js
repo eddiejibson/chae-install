@@ -66,8 +66,7 @@ const push = ((array) => {
 
 const removeFromUrl = ((array) => {
     array.forEach((item) => {
-        let i = packages.indexOf(item);
-        if (i <= 0) {
+        if ((packages.length - 1) < 0) {
             packages = [];
             installUrl.value = "Select packages below to create the URL";
         } else {
