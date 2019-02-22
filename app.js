@@ -9,26 +9,12 @@
 
 const express = require("express"),
     app = express(),
-    bodyParser = require("body-parser"),
     morgan = require("morgan"),
     config = require("./config.json"),
-    Sentry = require('@sentry/node'),
     scriptGenerator = require("./routes/scriptGenerator.js"),
     install = require("./install.json");
 
-if (config.sentry) {
-    Sentry.init({
-        dsn: config.sentry.dsn
-    });
-    app.use(Sentry.Handlers.requestHandler());
-}
-
-app.use(morgan("dev"));
 app.use(express.static(__dirname + '/static'));
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
-app.use(bodyParser.json()); //Parse json
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -50,9 +36,6 @@ if (!config.production) {
 }
 
 app.use(scriptGenerator); //Pass to script generator route 
-if (config.sentry) {
-    app.use(Sentry.Handlers.errorHandler());
-}
 
 app.use((req, res, next) => {
     return res.status(404).json({
