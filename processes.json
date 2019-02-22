@@ -1,0 +1,8 @@
+{
+    "apps": [
+        {
+            "name": "chae_install",
+            "script": "./app.js"
+        }
+    ]
+}
