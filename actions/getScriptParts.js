@@ -12,7 +12,7 @@ var getPreInstallPart = ((packages) => {
         } else {
             if (package.indexOf("-" > -1)) { //All children are named with the convention "parentPackage-subPackage"
                 let parentPackage = package.split("-")[0];
-                if (!packages[parentPackage] && install.packages[parentPackage]) {
+                if (packages.indexOf(parentPackage) <= -1 && install.packages[parentPackage]) {
                     packages.unshift(parentPackage);
                     if (install.packages[parentPackage].ppa) {
                         ppa = true;
