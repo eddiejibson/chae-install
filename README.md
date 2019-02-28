@@ -1,4 +1,7 @@
 # chae-install
+
+[See it in action here](https://install.chae.sh)
+
 A simple script generator for the installation of packages along with various other tasks.
 Understandably, setting up a server from scratch is a pain. install.chae.sh assists you with this. You can select the packages you wish to install along with a variety of other tasks and it will generate a one-line command to complete the task for you. It can also handle various other tasks such as adding the correct PPAs, updating the system and downloading backups.
 
